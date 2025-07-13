@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citiverse - Three.js Sample</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+            font-family: Arial, sans-serif;
+        }
+        
+        #container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        #ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            color: white;
+        }
+        
+        .scene-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .scene-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .scene-button.active {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        #debug-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="ui">
+            <div>
+                <button class="scene-button active" data-scene="earth">Earth 3D</button>
+                <button class="scene-button" data-scene="map">Seoul Map</button>
+                <button class="scene-button" data-scene="factory">Metaverse Factory</button>
+            </div>
+        </div>
+        <div id="debug-info">
+            <div>Scene: <span id="current-scene">Earth 3D</span></div>
+            <div>FPS: <span id="fps">0</span></div>
+            <div>Objects: <span id="object-count">0</span></div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="js/SceneManager.js"></script>
+    <script src="js/scenes/EarthScene.js"></script>
+    <script src="js/scenes/MapScene.js"></script>
+    <script src="js/scenes/FactoryScene.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
