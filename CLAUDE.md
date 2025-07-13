@@ -13,17 +13,21 @@ Citiverse is a Three.js-based browser application showcasing three interactive 3
 
 **Start Local Server:**
 ```bash
-python3 server.py
+npm start
+```
+Or directly:
+```bash
+node server.js
 ```
 Then open: http://localhost:8000
 
-**Alternative Servers:**
+**Alternative Server:**
 ```bash
 npx http-server -p 8000 --cors
 ```
 
 **Why Local Server Required:**
-Local file access (`file://`) blocks NASA texture loading due to CORS policy. The included `server.py` resolves this.
+Local file access (`file://`) blocks NASA texture loading due to CORS policy. The included Node.js server resolves this with proper CORS headers and zero dependencies.
 
 ## Architecture
 

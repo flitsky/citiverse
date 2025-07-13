@@ -1,0 +1,27 @@
+{
+  "name": "citiverse",
+  "version": "1.0.0",
+  "description": "Three.js-based interactive 3D visualization with NASA Earth textures",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "node server.js"
+  },
+  "keywords": [
+    "threejs",
+    "3d",
+    "earth",
+    "nasa",
+    "visualization",
+    "metaverse"
+  ],
+  "author": "flitsky",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:flitsky/citiverse.git"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
