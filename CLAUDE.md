@@ -89,3 +89,15 @@ Each scene class (EarthScene, MapScene, FactoryScene) is self-contained with:
 - Earth scene uses custom ShaderMaterial with vertex/fragment shaders
 - Uniform values updated in `update()` method for animations
 - Cloud speed controlled by multiplier in fragment shader UV offset
+
+**Scene Interaction System:**
+- MapScene includes click event handling via raycaster for factory building
+- Factory building clicks trigger scene transitions to FactoryScene
+- Click detection uses THREE.Raycaster with mouse coordinate conversion
+- Scene switching handled through SceneManager.switchScene() method
+
+**3D Object Click Detection:**
+- Raycaster setup in scene `init()` method
+- Mouse event handling on renderer DOM element
+- Object grouping for efficient intersection testing
+- Factory building uses THREE.Group for combined click detection
