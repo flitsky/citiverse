@@ -22,7 +22,7 @@ class MapScene {
     }
 
     setupCamera() {
-        this.camera.position.set(0, 20, 0);
+        this.camera.position.set(10, 15, 10);
         this.camera.lookAt(0, 0, 0);
     }
 
@@ -129,11 +129,12 @@ class MapScene {
         roof.position.set(0, 1.75, 0);
         roof.castShadow = true;
         
-        // 클릭 이벤트용 그룹
+        // 클릭 이벤트용 그룹 (블럭 내 위치로 이동)
         this.metaverseFactory = new THREE.Group();
         this.metaverseFactory.add(base);
         this.metaverseFactory.add(tower);
         this.metaverseFactory.add(roof);
+        this.metaverseFactory.position.set(-2, 0, -2); // 대각선 맞은편 블럭으로 이동
         this.scene.add(this.metaverseFactory);
     }
 

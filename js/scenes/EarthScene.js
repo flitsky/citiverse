@@ -15,6 +15,7 @@ class EarthScene {
         this.createAtmosphere();
         this.setupControls();
         this.setupBackground();
+        this.setupRaycaster();
     }
     
     setupCamera() {
@@ -237,5 +238,35 @@ class EarthScene {
         if (this.controls) {
             this.controls.dispose();
         }
+        
+        if (this.onMouseClick) {
+            this.renderer.domElement.removeEventListener('click', this.onMouseClick);
+        }
+    }
+    
+    setupRaycaster() {
+        this.raycaster = new THREE.Raycaster();
+        this.mouse = new THREE.Vector2();
+        
+        this.onMouseClick = (event) => {
+            const rect = this.renderer.domElement.getBoundingClientRect();
+            this.mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+            this.mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+            
+            this.raycaster.setFromCamera(this.mouse, this.camera);
+            const intersects = this.raycaster.intersectObject(this.earth, true);
+            
+            if (intersects.length > 0) {
+                console.log('Earth clicked! Switching to MapScene...');
+                
+                if (window.sceneManager) {
+                    window.sceneManager.switchScene('map');
+                } else {
+                    console.error('SceneManager not found on window object');
+                }
+            }
+        };
+        
+        this.renderer.domElement.addEventListener('click', this.onMouseClick);
     }
 }
