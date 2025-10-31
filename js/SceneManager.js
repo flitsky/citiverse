@@ -30,7 +30,16 @@ class SceneManager {
                 this.currentScene.cleanup();
             }
             this.currentScene = this.scenes[name];
-            this.currentScene.init();
+            const initResult = this.currentScene.init();
+            if (initResult && typeof initResult.then === 'function') {
+                initResult
+                    .then(() => {
+                        console.log(`Scene ${name} ready`);
+                    })
+                    .catch((error) => {
+                        console.error(`Scene ${name} failed to initialize`, error);
+                    });
+            }
             console.log(`Switched to scene: ${name}`);
             
             document.getElementById('current-scene').textContent = name;
